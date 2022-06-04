@@ -1,4 +1,4 @@
-let t = 0.3; // швидкість навчання
+let t = 0.02; // швидкість навчання
 const N = 3; // кількість вхідних даних
 let w = []; // вагові коефіцієнти
 const THRESHOLD = 1; // порогове значення(O)
@@ -27,9 +27,8 @@ function init() {
 function predict(xValues) {
   if (xValues[0] === 0 && xValues[1] === 0 && xValues[2] === 0) return 1;
   let summator = xValues.reduce((sum, x, i) => (sum += x * w[i]), 0); // сумматор(a)
-  //   let summator = xValues[0] * w[0] + xValues[1] * w[1] + xValues[2] * w[2]; // сумматор(a)
   outputSummator = summator;
-  //порогова функція(функція активація), якщо сумматор >= threshold, то 1, а якщо < threshold, то 0
+  //порогова функція(функція активація)
   let y = summator >= THRESHOLD ? 1 : 0; //вихід, відповідь нейрону
   return y;
 }
